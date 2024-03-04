@@ -717,11 +717,11 @@ require('lazy').setup {
   },
   {
     'catppuccin/nvim',
-    name = 'catppuccin',
+    name = 'catppuccin-latte',
     priority = 1000,
     lazy = false,
     config = function()
-      vim.cmd.colorscheme = 'catppuccin-latte'
+      vim.cmd.colorscheme 'catppuccin-latte'
     end,
   },
   -- Highlight todo, notes, etc in comments
