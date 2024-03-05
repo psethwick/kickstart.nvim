@@ -3,5 +3,8 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  'ggandor/leap.nvim',
+  {
+    'stevearc/overseer.nvim',
+    lazy = false,
+  },
 }
