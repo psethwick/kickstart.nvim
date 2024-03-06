@@ -83,6 +83,15 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
+    local vscode_ext = require 'dap.ext.vscode'
+    vscode_ext.json_decode = require('overseer.json').decode
+    vscode_ext.load_launchjs(nil, {
+      ['pwa-node'] = {
+        'typescript',
+        'javascript',
+        'typescriptreact',
+      },
+    })
     require('dap-go').setup()
     require('dap-python').setup 'python'
   end,
