@@ -84,11 +84,11 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
     dap.adapters.lldb = {
       type = 'executable',
-      command = 'lldb-vscode',
+      command = '/sbin/lldb-vscode',
       name = 'lldb',
     }
 
-    dap.configurations.cpp = {
+    local lldb_config = {
       {
         name = 'Launch',
         type = 'lldb',
@@ -102,8 +102,9 @@ return {
       },
     }
 
-    dap.configurations.c = dap.configurations.cpp
-    dap.configurations.rust = dap.configurations.cpp
+    dap.configurations.cpp = lldb_config
+    dap.configurations.c = lldb_config
+    dap.configurations.rust = lldb_config
 
     local vscode_ext = require 'dap.ext.vscode'
     vscode_ext.json_decode = require('overseer.json').decode
