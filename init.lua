@@ -95,6 +95,9 @@ vim.g.maplocalleader = ' '
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Prepend mise shims to PATH
+vim.env.PATH = vim.env.HOME .. '/.local/share/mise/shims:' .. vim.env.PATH
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
@@ -139,6 +142,9 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.tabstop = 4
+
+-- show ^M if format happens to be windows
+vim.opt.ffs = 'unix'
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -615,10 +621,8 @@ require('lazy').setup {
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'black' },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        javascript = { { 'prettierd', 'prettier' } },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
       },
     },
   },
