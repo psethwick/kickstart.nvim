@@ -3,6 +3,16 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  'tpope/vim-fugitive',
   'stevearc/overseer.nvim',
+
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+
+      'sindrets/diffview.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    config = true,
+  },
 }
