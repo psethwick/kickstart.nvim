@@ -1,7 +1,3 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
 return {
   'stevearc/overseer.nvim',
 
@@ -17,13 +13,6 @@ return {
   },
   {
     'christoomey/vim-tmux-navigator',
-    cmd = {
-      'TmuxNavigateLeft',
-      'TmuxNavigateDown',
-      'TmuxNavigateUp',
-      'TmuxNavigateRight',
-      'TmuxNavigatePrevious',
-    },
     keys = {
       { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
       { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
@@ -34,13 +23,12 @@ return {
   },
   {
     'vim-test/vim-test',
-    config = function()
-      -- TODO:
-      -- nmap <silent> <leader>t :TestNearest<CR>
-      -- nmap <silent> <leader>T :TestFile<CR>
-      -- nmap <silent> <leader>a :TestSuite<CR>
-      -- nmap <silent> <leader>l :TestLast<CR>
-      -- nmap <silent> <leader>g :TestVisit<CR>
-    end,
+    keys = {
+      { '<leader>tn', ':TestNearest<CR>', desc = 'Test: Nearest' },
+      { '<leader>tf', ':TestFile<CR>', desc = 'Test: File' },
+      { '<leader>ts', ':TestSuite<CR>', desc = 'Test: Suite' },
+      { '<leader>tl', ':TestLast<CR>', desc = 'Test: Last' },
+      { '<leader>tv', ':TestVisit<CR>', desc = 'Test: Visit' },
+    },
   },
 }
