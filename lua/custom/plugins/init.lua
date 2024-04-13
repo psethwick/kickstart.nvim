@@ -37,4 +37,14 @@ return {
       { '<leader>tv', ':TestVisit<CR>', desc = 'Test: Visit' },
     },
   },
+  {
+    'anekos/hledger-vim',
+    lazy = false,
+    config = function()
+      --   vim.api.buf
+      vim.cmd [[
+        autocmd FileType ledger setlocal omnifunc=hledger#complete#omnifunc
+      ]]
+    end,
+  },
 }
