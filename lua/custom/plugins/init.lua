@@ -1,6 +1,7 @@
 return {
   'stevearc/overseer.nvim',
   {
+    lazy = false,
     'stevearc/oil.nvim',
     opts = {},
     keys = {
