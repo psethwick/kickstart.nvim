@@ -1,3 +1,7 @@
+vim.cmd [[
+  autocmd BufEnter *.slint :setlocal filetype=slint
+]]
+
 return {
   'stevearc/overseer.nvim',
   {
