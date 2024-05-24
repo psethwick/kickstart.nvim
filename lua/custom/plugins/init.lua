@@ -3,6 +3,7 @@ vim.cmd [[
 ]]
 
 return {
+  'wuelnerdotexe/vim-astro',
   'stevearc/overseer.nvim',
   {
     'stevearc/oil.nvim',
