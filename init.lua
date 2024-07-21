@@ -668,6 +668,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'ruff_format' },
+        sql = { 'sql_formatter' },
         javascript = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
