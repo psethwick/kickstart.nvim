@@ -3,6 +3,13 @@ vim.cmd [[
 ]]
 
 return {
+  -- 'vlime/vlime',
+  {
+    'monkoose/nvlime',
+    dependencies = {
+      'monkoose/parsley',
+    },
+  },
   'wuelnerdotexe/vim-astro',
   'stevearc/overseer.nvim',
   {
@@ -10,6 +17,7 @@ return {
     lazy = false,
     opts = {},
     keys = {
+      -- TODO: stop this stealing C-P
       { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
     },
   },
