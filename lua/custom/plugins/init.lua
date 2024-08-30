@@ -4,13 +4,30 @@ vim.cmd [[
 
 return {
   -- 'vlime/vlime',
+  -- {
+  --   'monkoose/nvlime',
+  --   dependencies = {
+  --     'monkoose/parsley',
+  --   },
+  -- },
   {
-    'monkoose/nvlime',
-    dependencies = {
-      'monkoose/parsley',
-    },
+    'vlime/vlime',
+    ft = 'lisp',
+    build = function()
+      -- Compile the Vlime server
+      vim.fn.system 'cd ~/.local/share/nvim/lazy/vlime/lisp && sbcl --load vlime-build.lisp'
+    end,
+    config = function()
+      -- Optional: Add any Vlime-specific configurations here
+      vim.g.vlime_enable_autodoc = 1
+      vim.g.vlime_window_settings = {
+        sldb = { pos = 'belowright', size = 20 },
+        repl = { pos = 'belowright', size = 20 },
+        inspector = { pos = 'belowright', size = 20 },
+      }
+    end,
   },
-  'wuelnerdotexe/vim-astro',
+  -- 'wuelnerdotexe/vim-astro',
   'stevearc/overseer.nvim',
   {
     'stevearc/oil.nvim',
