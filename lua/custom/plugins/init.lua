@@ -4,6 +4,19 @@ vim.cmd [[
 
 return {
   {
+    'mlochbaum/BQN',
+    config = function(plugin)
+      vim.opt.rtp:append(plugin.dir .. '/editors/vim')
+      vim.g.nvim_bqn = 'bqn'
+      vim.cmd [[
+
+          au! BufRead,BufNewFile *.bqn setf bqn
+          au! BufRead,BufNewFile * if getline(1) =~ '^#!.*bqn$' | setf bqn | endif
+    ]]
+    end,
+  },
+  'https://git.sr.ht/~detegr/nvim-bqn',
+  {
     'quarto-dev/quarto-nvim',
     dependencies = {
       'jmbuhr/otter.nvim',
