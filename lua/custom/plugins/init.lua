@@ -1,15 +1,25 @@
 vim.cmd [[
   autocmd BufEnter *.slint :setlocal filetype=slint
+  autocmd BufEnter *.k :setlocal filetype=k
 ]]
 
 return {
+  {
+    'https://codeberg.org/ngn/k',
+    ft = 'k',
+    config = function(plugin)
+      vim.opt.rtp:append(plugin.dir .. '/vim-k')
+      vim.cmd [[
+            autocmd! BufNew,BufRead *.k setf k
+    ]]
+    end,
+  },
   {
     'mlochbaum/BQN',
     config = function(plugin)
       vim.opt.rtp:append(plugin.dir .. '/editors/vim')
       vim.g.nvim_bqn = 'bqn'
       vim.cmd [[
-
           au! BufRead,BufNewFile *.bqn setf bqn
           au! BufRead,BufNewFile * if getline(1) =~ '^#!.*bqn$' | setf bqn | endif
     ]]
