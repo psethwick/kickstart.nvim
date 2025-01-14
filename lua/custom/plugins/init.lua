@@ -32,6 +32,9 @@ return {
       'jmbuhr/otter.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
+    {
+    lazy = false,
+    'godlygeek/tabular',
   },
   {
     'kristijanhusak/vim-dadbod-ui',
