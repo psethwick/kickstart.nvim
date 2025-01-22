@@ -4,6 +4,7 @@ vim.cmd [[
 ]]
 
 return {
+  { 'milanglacier/yarepl.nvim', config = true },
   {
     'https://codeberg.org/ngn/k',
     ft = 'k',
@@ -32,7 +33,8 @@ return {
       'jmbuhr/otter.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
-    {
+  },
+  {
     lazy = false,
     'godlygeek/tabular',
   },
