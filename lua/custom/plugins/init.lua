@@ -126,37 +126,38 @@ return {
   --   end,
   -- },
   'stevearc/overseer.nvim',
-  {
-    'stevearc/oil.nvim',
-    lazy = false,
-    opts = {
-      keymaps = {
-        ['g?'] = 'actions.show_help',
-        ['<CR>'] = 'actions.select',
-        ['<C-s>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
-        ['<C-h>'] = { 'actions.select', opts = { horizontal = true }, desc = 'Open the entry in a horizontal split' },
-        ['<C-t>'] = { 'actions.select', opts = { tab = true }, desc = 'Open the entry in new tab' },
-        ['<C-v>'] = 'actions.preview', -- was <C-p> and used to upset me
-        ['<C-c>'] = 'actions.close',
-        ['<C-l>'] = 'actions.refresh',
-        ['-'] = 'actions.parent',
-        ['_'] = 'actions.open_cwd',
-        ['`'] = 'actions.cd',
-        ['~'] = { 'actions.cd', opts = { scope = 'tab' }, desc = ':tcd to the current oil directory', mode = 'n' },
-        ['gs'] = 'actions.change_sort',
-        ['gx'] = 'actions.open_external',
-        ['g.'] = 'actions.toggle_hidden',
-      },
-      -- Set to false to disable all of the above keymaps
-      use_default_keymaps = false,
-      view_options = {
-        show_hidden = true,
-      },
-    },
-    keys = {
-      { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
-    },
-  },
+  -- trying mini.files for now
+  -- {
+  --   'stevearc/oil.nvim',
+  --   lazy = false,
+  --   opts = {
+  --     keymaps = {
+  --       ['g?'] = 'actions.show_help',
+  --       ['<CR>'] = 'actions.select',
+  --       ['<C-s>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
+  --       ['<C-h>'] = { 'actions.select', opts = { horizontal = true }, desc = 'Open the entry in a horizontal split' },
+  --       ['<C-t>'] = { 'actions.select', opts = { tab = true }, desc = 'Open the entry in new tab' },
+  --       ['<C-v>'] = 'actions.preview', -- was <C-p> and used to upset me
+  --       ['<C-c>'] = 'actions.close',
+  --       ['<C-l>'] = 'actions.refresh',
+  --       ['-'] = 'actions.parent',
+  --       ['_'] = 'actions.open_cwd',
+  --       ['`'] = 'actions.cd',
+  --       ['~'] = { 'actions.cd', opts = { scope = 'tab' }, desc = ':tcd to the current oil directory', mode = 'n' },
+  --       ['gs'] = 'actions.change_sort',
+  --       ['gx'] = 'actions.open_external',
+  --       ['g.'] = 'actions.toggle_hidden',
+  --     },
+  --     -- Set to false to disable all of the above keymaps
+  --     use_default_keymaps = false,
+  --     view_options = {
+  --       show_hidden = true,
+  --     },
+  --   },
+  --   keys = {
+  --     { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+  --   },
+  -- },
   {
     'NeogitOrg/neogit',
     dependencies = {

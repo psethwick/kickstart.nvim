@@ -4,6 +4,7 @@
 
 return {
   {
+    -- TODO: mini.diff?
     'lewis6991/gitsigns.nvim',
     opts = {
       on_attach = function(bufnr)
