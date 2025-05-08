@@ -738,7 +738,11 @@ require('lazy').setup({
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
-      require('mini.files').setup()
+      require('mini.files').setup {
+        windows = {
+          preview = tru,
+        },
+      }
 
       vim.keymap.set('n', '-', function()
         MiniFiles.open(vim.api.nvim_buf_get_name(0))
