@@ -703,7 +703,10 @@ require('lazy').setup({
     priority = 1000,
     lazy = false,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-latte'
+      if vim.env.COLORTERM == 'truecolor' then
+        vim.opt.termguicolors = true
+        vim.cmd.colorscheme 'catppuccin-latte'
+      end
     end,
   },
 
