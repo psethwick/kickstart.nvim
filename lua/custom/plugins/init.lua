@@ -53,6 +53,7 @@ return {
       }
     end,
   },
+  { 'psethwick/Comrade' },
   {
     'https://codeberg.org/ngn/k',
     ft = 'k',
