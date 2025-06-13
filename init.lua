@@ -573,6 +573,7 @@ require('lazy').setup({
         python = { 'ruff_format' },
         sql = { 'sql_formatter' },
         javascript = { 'prettier' },
+        astro = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
       },
