@@ -155,21 +155,7 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<C-p>', function()
-        local handle = io.popen 'git status 2>/dev/null'
-        if not handle then
-          print 'git not working???'
-          return
-        end
-        local result = handle:read '*l'
-        handle:close()
-
-        if result then
-          builtin.git_files { cwd = vim.fn.getcwd() }
-        else
-          builtin.find_files()
-        end
-      end)
+      vim.keymap.set('n', '<C-p>', builtin.find_files)
       vim.keymap.set('n', '<leader>sf', function()
         builtin.find_files { hidden = true, no_ignore = true }
       end, { desc = '[S]earh [F]iles' })
