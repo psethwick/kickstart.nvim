@@ -7,23 +7,13 @@ return {
   {
     'milanglacier/yarepl.nvim',
     config = function()
-      -- below is the default configuration, there's no need to copy paste them if
-      -- you are satisfied with the default configuration, just calling
-      -- `require('yarepl').setup {}` is sufficient.
       local yarepl = require 'yarepl'
 
       yarepl.setup {
-        -- see `:h buflisted`, whether the REPL buffer should be buflisted.
         buflisted = true,
-        -- whether the REPL buffer should be a scratch buffer.
         scratch = true,
-        -- the filetype of the REPL buffer created by `yarepl`
         ft = 'REPL',
-        -- How yarepl open the REPL window, can be a string or a lua function.
-        -- See below example for how to configure this option
         wincmd = 'belowright 15 split',
-        -- The available REPL palattes that `yarepl` can create REPL based on.
-        -- To disable a built-in meta, set its key to `false`, e.g., `metas = { R = false }`
         metas = {
           aichat = { cmd = 'aichat', formatter = 'bracketed_pasting' },
           k = { cmd = 'rlwrap ngnk', formatter = 'bracketed_pasting' },
@@ -34,22 +24,9 @@ return {
           bash = { cmd = 'bash', formatter = vim.fn.has 'linux' == 1 and 'bracketed_pasting' or 'trim_empty_lines' },
           zsh = { cmd = 'zsh', formatter = 'bracketed_pasting' },
         },
-        -- when a REPL process exits, should the window associated with those REPLs closed?
         close_on_exit = true,
-        -- whether automatically scroll to the bottom of the REPL window after sending
-        -- text? This feature would be helpful if you want to ensure that your view
-        -- stays updated with the latest REPL output.
         scroll_to_bottom_after_sending = true,
-        -- Format REPL buffer names as #repl_name#n (e.g., #ipython#1) instead of using terminal defaults
         format_repl_buffers_names = true,
-        os = {
-          -- Some hacks for Windows. macOS and Linux users can simply ignore
-          -- them. The default options are recommended for Windows user.
-          windows = {
-            -- Send a final `\r` to the REPL with delay,
-            send_delayed_cr_after_sending = true,
-          },
-        },
       }
     end,
   },
@@ -99,7 +76,6 @@ return {
       'DBUIFindBuffer',
     },
     init = function()
-      -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
@@ -111,7 +87,6 @@ return {
       { 'm00qek/baleia.nvim', tag = 'v1.3.0' },
     },
     config = function()
-      ---@type CompileModeOpts
       vim.g.compile_mode = {
         baleia_setup = true,
       }
@@ -130,18 +105,7 @@ return {
     end,
   },
   'stevearc/overseer.nvim',
-  {
-    'NeogitOrg/neogit',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
-      'nvim-telescope/telescope.nvim',
-    },
-    config = true,
-    keys = {
-      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Git Neogit' },
-    },
-  },
+  'sindrets/diffview.nvim',
   {
     'vim-test/vim-test',
     keys = {
@@ -152,14 +116,4 @@ return {
       { '<leader>tv', ':TestVisit<CR>', desc = 'Test: Visit' },
     },
   },
-  -- {
-  --   'anekos/hledger-vim',
-  --   lazy = false,
-  --   config = function()
-  --     --   vim.api.buf
-  --     vim.cmd [[
-  --       autocmd FileType ledger setlocal omnifunc=hledger#complete#omnifunc
-  --     ]]
-  --   end,
-  -- },
 }
