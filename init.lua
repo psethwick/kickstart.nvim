@@ -155,7 +155,9 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<C-p>', builtin.find_files)
+      vim.keymap.set('n', '<C-p>', function()
+        builtin.find_files { find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' } }
+      end)
       vim.keymap.set('n', '<leader>sf', function()
         builtin.find_files { hidden = true, no_ignore = true }
       end, { desc = '[S]earh [F]iles' })
@@ -314,7 +316,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, cs = true }
+        local disable_filetypes = { c = true, cpp = true } --, cs = true }
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
