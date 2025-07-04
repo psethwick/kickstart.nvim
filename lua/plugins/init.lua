@@ -5,7 +5,27 @@ vim.cmd [[
 
 return {
   {
-    'tpope/vim-dispatch',
+    {
+      'tpope/vim-dispatch',
+
+      config = function()
+        local dispatch_commands = {
+          rust = 'cargo check',
+        }
+
+        for filetype, compile_command in pairs(dispatch_commands) do
+          vim.api.nvim_create_autocmd('FileType', {
+            pattern = filetype,
+            callback = function()
+              vim.b.dispatch = compile_command
+            end,
+            desc = 'Set dispatch command for ' .. filetype .. ' files',
+          })
+        end
+
+        vim.keymap.set('n', '<leader>md', ':Dispatch<CR>', { desc = 'Run dispatch command' })
+      end,
+    },
     'milanglacier/yarepl.nvim',
     config = function()
       local yarepl = require 'yarepl'
