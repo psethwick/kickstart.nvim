@@ -5,6 +5,7 @@ vim.cmd [[
 
 return {
   {
+    'tpope/vim-dispatch',
     'milanglacier/yarepl.nvim',
     config = function()
       local yarepl = require 'yarepl'
@@ -77,18 +78,6 @@ return {
     },
     init = function()
       vim.g.db_ui_use_nerd_fonts = 1
-    end,
-  },
-  {
-    'ej-shafran/compile-mode.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      { 'm00qek/baleia.nvim', tag = 'v1.3.0' },
-    },
-    config = function()
-      vim.g.compile_mode = {
-        baleia_setup = true,
-      }
     end,
   },
   {
