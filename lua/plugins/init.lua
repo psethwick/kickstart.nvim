@@ -10,7 +10,7 @@ return {
 
       config = function()
         local dispatch_commands = {
-          rust = 'cargo check',
+          rust = 'cargo clippy',
         }
 
         for filetype, compile_command in pairs(dispatch_commands) do
