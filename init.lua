@@ -46,6 +46,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 vim.keymap.set('n', '<C-j>', ':cn<CR>')
 vim.keymap.set('n', '<C-k>', ':cp<CR>')
+vim.keymap.set('n', '<C-l>', ':cc<CR>')
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
