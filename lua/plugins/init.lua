@@ -25,37 +25,13 @@ return {
       }
     end,
   },
-  -- arraylang.lua
-  {
-    'https://codeberg.org/ngn/k',
-    ft = 'k',
-    config = function(plugin)
-      vim.opt.rtp:append(plugin.dir .. '/vim-k')
-      vim.cmd [[
-            autocmd! BufNew,BufRead *.k setf k
-    ]]
-    end,
-  },
-  {
-    'mlochbaum/BQN',
-    config = function(plugin)
-      vim.opt.rtp:append(plugin.dir .. '/editors/vim')
-      vim.g.nvim_bqn = 'bqn'
-      vim.cmd [[
-          au! BufRead,BufNewFile *.bqn setf bqn
-          au! BufRead,BufNewFile * if getline(1) =~ '^#!.*bqn$' | setf bqn | endif
-    ]]
-    end,
-  },
-  'https://git.sr.ht/~detegr/nvim-bqn',
-
-  {
-    'quarto-dev/quarto-nvim',
-    dependencies = {
-      'jmbuhr/otter.nvim',
-      'nvim-treesitter/nvim-treesitter',
-    },
-  },
+  -- {
+  --   'quarto-dev/quarto-nvim',
+  --   dependencies = {
+  --     'jmbuhr/otter.nvim',
+  --     'nvim-treesitter/nvim-treesitter',
+  --   },
+  -- },
   {
     lazy = false,
     'godlygeek/tabular',
@@ -70,28 +46,6 @@ return {
       }
       vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
       vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
-    end,
-  },
-  {
-    'vim-test/vim-test',
-    keys = {
-      { '<leader>tn', ':TestNearest<CR>', desc = 'Test: Nearest' },
-      { '<leader>tf', ':TestFile<CR>', desc = 'Test: File' },
-      { '<leader>ts', ':TestSuite<CR>', desc = 'Test: Suite' },
-      { '<leader>tl', ':TestLast<CR>', desc = 'Test: Last' },
-      { '<leader>tv', ':TestVisit<CR>', desc = 'Test: Visit' },
-    },
-  },
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin-latte',
-    priority = 1000,
-    lazy = false,
-    config = function()
-      if vim.env.COLORTERM == 'truecolor' then
-        vim.opt.termguicolors = true
-        vim.cmd.colorscheme 'catppuccin-latte'
-      end
     end,
   },
 }
