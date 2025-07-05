@@ -1,5 +1,4 @@
 return {
-  --
   'mfussenegger/nvim-dap',
 
   dependencies = {
@@ -12,6 +11,7 @@ return {
 
     'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
+    'stevearc/overseer.nvim',
   },
   config = function()
     local dap = require 'dap'
@@ -29,7 +29,6 @@ return {
     }
 
     require('nvim-dap-virtual-text').setup {}
-    -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })

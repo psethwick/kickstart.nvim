@@ -1,33 +1,5 @@
-vim.cmd [[
-  autocmd BufEnter *.slint :setlocal filetype=slint
-  autocmd BufEnter *.k :setlocal filetype=k
-]]
-
 return {
   {
-    'tpope/vim-sleuth',
-    'tpope/vim-eunuch',
-    {
-      'tpope/vim-dispatch',
-
-      config = function()
-        local dispatch_commands = {
-          rust = 'cargo clippy',
-        }
-
-        for filetype, compile_command in pairs(dispatch_commands) do
-          vim.api.nvim_create_autocmd('FileType', {
-            pattern = filetype,
-            callback = function()
-              vim.b.dispatch = compile_command
-            end,
-            desc = 'Set dispatch command for ' .. filetype .. ' files',
-          })
-        end
-
-        vim.keymap.set('n', '<leader>md', ':Dispatch<CR>', { desc = 'Run dispatch command' })
-      end,
-    },
     'milanglacier/yarepl.nvim',
     config = function()
       local yarepl = require 'yarepl'
@@ -53,6 +25,7 @@ return {
       }
     end,
   },
+  -- arraylang.lua
   {
     'https://codeberg.org/ngn/k',
     ft = 'k',
@@ -75,6 +48,7 @@ return {
     end,
   },
   'https://git.sr.ht/~detegr/nvim-bqn',
+
   {
     'quarto-dev/quarto-nvim',
     dependencies = {
@@ -85,22 +59,6 @@ return {
   {
     lazy = false,
     'godlygeek/tabular',
-  },
-  {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      { 'tpope/vim-dadbod' },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
   },
   {
     'toppair/peek.nvim',
@@ -114,8 +72,6 @@ return {
       vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
     end,
   },
-  'stevearc/overseer.nvim',
-  'sindrets/diffview.nvim',
   {
     'vim-test/vim-test',
     keys = {
@@ -125,5 +81,17 @@ return {
       { '<leader>tl', ':TestLast<CR>', desc = 'Test: Last' },
       { '<leader>tv', ':TestVisit<CR>', desc = 'Test: Visit' },
     },
+  },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin-latte',
+    priority = 1000,
+    lazy = false,
+    config = function()
+      if vim.env.COLORTERM == 'truecolor' then
+        vim.opt.termguicolors = true
+        vim.cmd.colorscheme 'catppuccin-latte'
+      end
+    end,
   },
 }
