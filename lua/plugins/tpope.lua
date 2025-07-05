@@ -5,15 +5,16 @@ return {
   {
     'tpope/vim-dispatch',
     config = function()
-      local dispatch_commands = {
+      local commands = {
         rust = 'cargo clippy',
+        cs = 'dotnet build',
       }
 
-      for filetype, compile_command in pairs(dispatch_commands) do
+      for filetype, compile in pairs(commands) do
         vim.api.nvim_create_autocmd('FileType', {
           pattern = filetype,
           callback = function()
-            vim.b.dispatch = compile_command
+            vim.b.dispatch = compile
           end,
           desc = 'Set dispatch command for ' .. filetype .. ' files',
         })
