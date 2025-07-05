@@ -65,8 +65,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -75,10 +73,6 @@ require('lazy').setup({
   --
   --  This is equivalent to:
   --    require('Comment').setup({})
-
-  -- "gc" to comment visual regions/lines
-  -- TODO: mini.comment?
-  { 'numToStr/Comment.nvim', opts = {} },
 
   {
     'lewis6991/gitsigns.nvim',
@@ -460,6 +454,8 @@ require('lazy').setup({
           preview = true,
         },
       }
+
+      require('mini.Comment').setup()
 
       vim.keymap.set('n', '-', function()
         require('mini.files').open(vim.api.nvim_buf_get_name(0))

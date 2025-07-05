@@ -5,6 +5,8 @@ vim.cmd [[
 
 return {
   {
+    'tpope/vim-sleuth',
+    'tpope/vim-eunuch',
     {
       'tpope/vim-dispatch',
 
