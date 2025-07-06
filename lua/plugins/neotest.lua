@@ -9,10 +9,14 @@ return {
 
       -- adapters
       'nvim-neotest/neotest-python',
+      'rouge8/neotest-rust',
+      'Issafalcon/neotest-dotnet',
     },
     config = function()
       require('neotest').setup {
         adapters = {
+          require 'neotest-dotnet',
+          require 'neotest-rust',
           require 'neotest-python' {
             dap = { justMyCode = false },
             cwd = function(path)
