@@ -1,37 +1,164 @@
-return {
-  {
-    'nvim-neotest/neotest',
-    dependencies = {
-      'nvim-neotest/nvim-nio',
-      'nvim-lua/plenary.nvim',
-      'antoinemadec/FixCursorHold.nvim',
-      'nvim-treesitter/nvim-treesitter',
+-- return {
+--   {
+--     'nvim-neotest/neotest',
+--     dependencies = {
+--       'nvim-neotest/nvim-nio',
+--       'nvim-lua/plenary.nvim',
+--       'antoinemadec/FixCursorHold.nvim',
+--       'nvim-treesitter/nvim-treesitter',
+--
+--       -- adapters
+--       'nvim-neotest/neotest-python',
+--       'rouge8/neotest-rust',
+--       'Issafalcon/neotest-dotnet',
+--     },
+--     config = function()
+--       require('neotest').setup {
+--         adapters = {
+--           require 'neotest-dotnet',
+--           require 'neotest-rust',
+--           require 'neotest-python' {
+--             dap = { justMyCode = false },
+--             runner = 'pytest',
+--             -- cwd = function(path)
+--             --   local current = vim.fn.fnamemodify(path, ':h')
+--             --   while current ~= '/' and current ~= '' do
+--             --     if vim.fn.filereadable(current .. '/' .. 'pyproject.toml') then
+--             --       return current
+--             --     end
+--             --     current = vim.fs.normalize(vim.fn.fnamemodify(current, ':p:h'))
+--             --   end
+--             --   return vim.fn.getcwd()
+--             -- end,
+--           },
+--         },
+--       }
+--     end,
+--   },
+-- }
+---@diagnostic disable: missing-fields
+local config = function()
+  local neotest = require 'neotest'
 
-      -- adapters
-      'nvim-neotest/neotest-python',
-      'rouge8/neotest-rust',
-      'Issafalcon/neotest-dotnet',
+  neotest.setup {
+    adapters = {
+      require 'neotest-python' {
+        args = { '--capture=no' },
+        is_test_file = function(file)
+          return string.match(file, '^.+%.py$') ~= nil
+        end,
+      },
+      require 'neotest-rust' {
+        args = { '--no-capture' },
+        dap_adapter = 'lldb',
+      },
     },
-    config = function()
-      require('neotest').setup {
-        adapters = {
-          require 'neotest-dotnet',
-          require 'neotest-rust',
-          require 'neotest-python' {
-            dap = { justMyCode = false },
-            cwd = function(path)
-              local current = vim.fn.fnamemodify(path, ':h')
-              while current ~= '/' and current ~= '' do
-                if vim.fn.filereadable(current .. '/' .. 'pyproject.toml') then
-                  return current
-                end
-                current = vim.fs.normalize(vim.fn.fnamemodify(current, ':p:h'))
-              end
-              return vim.fn.getcwd()
-            end,
-          },
-        },
-      }
+  }
+
+  vim.api.nvim_create_autocmd('BufEnter', {
+    callback = vim.schedule_wrap(function(args)
+      if vim.bo.filetype == 'neotest-output' then
+        vim.api.nvim_buf_set_keymap(args.buf, 'n', 'q', '', {
+          callback = function()
+            pcall(vim.api.nvim_buf_delete, args.buf, { force = true })
+          end,
+        })
+      end
+    end),
+  })
+end
+
+local keys = {
+  {
+    'tj',
+    function()
+      require('neotest').jump.next { status = 'failed' }
     end,
+    desc = 'jump to next failed test',
+  },
+  {
+    'tk',
+    function()
+      require('neotest').jump.prev { status = 'failed' }
+    end,
+    desc = 'jump to previous failed test',
+  },
+  {
+    '<space>tr',
+    function()
+      require('neotest').run.run()
+    end,
+    desc = 'run nearest test',
+  },
+  {
+    '<space>tR',
+    function()
+      require('neotest').run.run(vim.fn.expand '%')
+    end,
+    desc = 'run all tests in current file',
+  },
+  {
+    '<space>tw',
+    function()
+      require('neotest').watch.toggle()
+    end,
+    desc = 'watch nearest test',
+  },
+  {
+    '<space>td',
+    function()
+      require('neotest').run.run { strategy = 'dap' }
+    end,
+    desc = 'debug the nearest test',
+  },
+  {
+    '<space>tD',
+    function()
+      require('neotest').run.run_last { strategy = 'dap' }
+    end,
+    desc = 'debug the last nearest test',
+  },
+  {
+    '<space>ts',
+    function()
+      require('neotest').run.stop()
+    end,
+    desc = 'stop running tests',
+  },
+  {
+    '<space>ta',
+    function()
+      require('neotest').run.attach()
+    end,
+    desc = 'attach to the nearest test',
+  },
+  {
+    '<space>to',
+    function()
+      require('neotest').output.open { auto_close = true, enter = true }
+    end,
+    desc = 'open result window',
+  },
+  {
+    '<space>tO',
+    function()
+      require('neotest').summary.toggle()
+    end,
+    desc = 'toggle summary window',
+  },
+}
+
+return {
+  'nvim-neotest/neotest',
+  config = config,
+  keys = keys,
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter',
+    'nvim-lua/plenary.nvim',
+    'antoinemadec/FixCursorHold.nvim',
+    'haydenmeade/neotest-jest',
+    'marilari88/neotest-vitest',
+    'nvim-neotest/neotest-python',
+    'rouge8/neotest-rust',
   },
 }
