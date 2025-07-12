@@ -32,6 +32,11 @@ vim.opt.ffs = 'unix'
 
 vim.opt.inccommand = 'split'
 
+if vim.env.COLORTERM == 'truecolor' then
+  vim.opt.termguicolors = true
+  vim.cmd.colorscheme 'zellner'
+end
+
 vim.opt.cursorline = true
 
 vim.opt.scrolloff = 10
