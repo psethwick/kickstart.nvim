@@ -45,11 +45,11 @@ local colors = {
   dark_yellow = '#997700',
   dark_orange = '#994400',
 
-  -- Special colors - keeping Zellner's signature pink!
+  -- Special colors - keeping Zellner's signature NEON pink!
   purple = '#6600cc',
   brown = '#996633',
-  pink = '#ff6699', -- Classic Zellner pink
-  dark_pink = '#cc0066', -- Darker variant for better contrast
+  pink = '#ff00aa', -- NEON pink - much more vibrant!
+  dark_pink = '#dd0088', -- Still bright but with slight contrast
 
   -- UI colors
   cursor_line = '#f8f8f8',
@@ -136,13 +136,13 @@ hi('Float', { fg = colors.dark_red })
 hi('Identifier', { fg = colors.dark_blue })
 hi('Function', { fg = colors.dark_magenta })
 
-hi('Statement', { fg = colors.dark_pink, style = 'bold' })
-hi('Conditional', { fg = colors.dark_pink, style = 'bold' })
-hi('Repeat', { fg = colors.dark_pink, style = 'bold' })
-hi('Label', { fg = colors.dark_pink, style = 'bold' })
+hi('Statement', { fg = colors.pink, style = 'bold' })
+hi('Conditional', { fg = colors.pink, style = 'bold' })
+hi('Repeat', { fg = colors.pink, style = 'bold' })
+hi('Label', { fg = colors.pink, style = 'bold' })
 hi('Operator', { fg = colors.dark_orange })
-hi('Keyword', { fg = colors.dark_pink, style = 'bold' })
-hi('Exception', { fg = colors.dark_pink, style = 'bold' })
+hi('Keyword', { fg = colors.pink, style = 'bold' })
+hi('Exception', { fg = colors.pink, style = 'bold' })
 
 hi('PreProc', { fg = colors.dark_cyan })
 hi('Include', { fg = colors.dark_cyan })
@@ -220,9 +220,9 @@ hi('@punctuation.special', { fg = colors.dark_orange })
 hi('@type', { fg = colors.dark_blue, style = 'bold' })
 hi('@type.builtin', { fg = colors.blue, style = 'bold' })
 hi('@type.definition', { fg = colors.dark_blue, style = 'bold' })
-hi('@type.qualifier', { fg = colors.dark_pink })
+hi('@type.qualifier', { fg = colors.pink })
 
-hi('@storageclass', { fg = colors.dark_pink, style = 'bold' })
+hi('@storageclass', { fg = colors.pink, style = 'bold' })
 hi('@attribute', { fg = colors.dark_cyan })
 hi('@field', { fg = colors.brown })
 hi('@property', { fg = colors.brown })
@@ -310,6 +310,16 @@ hi('DiagnosticUnderlineHint', { sp = colors.cyan, style = 'undercurl' })
 hi('GitSignsAdd', { fg = colors.green })
 hi('GitSignsChange', { fg = colors.orange })
 hi('GitSignsDelete', { fg = colors.red })
+
+-- Which-key
+hi('WhichKey', { fg = colors.dark_blue, bg = colors.bg })
+hi('WhichKeyGroup', { fg = colors.pink, bg = colors.bg })
+hi('WhichKeyDesc', { fg = colors.fg, bg = colors.bg })
+hi('WhichKeySeperator', { fg = colors.gray4, bg = colors.bg })
+hi('WhichKeyFloat', { bg = colors.bg })
+hi('WhichKeyBorder', { fg = colors.gray4, bg = colors.bg })
+hi('WhichKeyNormal', { fg = colors.fg, bg = colors.bg })
+hi('WhichKeyValue', { fg = colors.gray5, bg = colors.bg })
 
 -- Make the colorscheme available
 M.colors = colors
