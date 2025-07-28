@@ -34,7 +34,7 @@ vim.opt.inccommand = 'split'
 
 if vim.env.COLORTERM == 'truecolor' then
   vim.opt.termguicolors = true
-  vim.cmd.colorscheme 'zellner'
+  vim.cmd.colorscheme 'george'
 end
 
 vim.opt.cursorline = true
