@@ -48,8 +48,8 @@ local colors = {
   -- Special colors - keeping Zellner's signature NEON pink!
   purple = '#6600cc',
   brown = '#996633',
-  pink = '#ff00aa', -- NEON pink - much more vibrant!
-  dark_pink = '#dd0088', -- Still bright but with slight contrast
+  pink = '#ff00aa',
+  dark_pink = '#dd0088',
 
   -- UI colors
   cursor_line = '#f8f8f8',
@@ -336,6 +336,15 @@ hi('MiniStarterItemBullet', { fg = colors.pink, bg = colors.bg })
 hi('MiniStarterItemPrefix', { fg = colors.dark_blue, bg = colors.bg })
 hi('MiniStarterSection', { fg = colors.pink, bg = colors.bg, style = 'bold' })
 hi('MiniStarterQuery', { fg = colors.dark_green, bg = colors.bg })
+
+-- QuickFix list
+hi('QuickFixLine', { fg = colors.bg, bg = colors.pink, style = 'bold' })
+hi('qfFileName', { fg = colors.dark_blue, bg = colors.bg, style = 'bold' })
+hi('qfLineNr', { fg = colors.orange, bg = colors.bg })
+hi('qfError', { fg = colors.red, bg = colors.bg, style = 'bold' })
+hi('qfWarning', { fg = colors.orange, bg = colors.bg })
+hi('qfSeparator', { fg = colors.gray5, bg = colors.bg })
+hi('QuickFixText', { fg = colors.fg, bg = colors.bg })
 
 -- Make the colorscheme available
 M.colors = colors
