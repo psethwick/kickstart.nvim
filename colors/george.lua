@@ -1,8 +1,10 @@
--- George colorscheme - Enhanced Zellner with modern syntax highlighting
--- Based on the classic Zellner theme with improved Treesitter support
+-- George colorscheme - Enhanced Zellner with classic pink accents
+-- Based on the classic Zellner theme with improved Treesitter support and original pink highlights
+-- Place this file in ~/.config/nvim/colors/george.lua
 
 local M = {}
 
+-- Clear existing highlighting
 vim.cmd 'highlight clear'
 if vim.fn.exists 'syntax_on' then
   vim.cmd 'syntax reset'
@@ -43,10 +45,11 @@ local colors = {
   dark_yellow = '#997700',
   dark_orange = '#994400',
 
-  -- Special colors
+  -- Special colors - keeping Zellner's signature pink!
   purple = '#6600cc',
   brown = '#996633',
-  pink = '#cc6699',
+  pink = '#ff6699', -- Classic Zellner pink
+  dark_pink = '#cc0066', -- Darker variant for better contrast
 
   -- UI colors
   cursor_line = '#f8f8f8',
@@ -133,13 +136,13 @@ hi('Float', { fg = colors.dark_red })
 hi('Identifier', { fg = colors.dark_blue })
 hi('Function', { fg = colors.dark_magenta })
 
-hi('Statement', { fg = colors.purple, style = 'bold' })
-hi('Conditional', { fg = colors.purple, style = 'bold' })
-hi('Repeat', { fg = colors.purple, style = 'bold' })
-hi('Label', { fg = colors.purple, style = 'bold' })
+hi('Statement', { fg = colors.dark_pink, style = 'bold' })
+hi('Conditional', { fg = colors.dark_pink, style = 'bold' })
+hi('Repeat', { fg = colors.dark_pink, style = 'bold' })
+hi('Label', { fg = colors.dark_pink, style = 'bold' })
 hi('Operator', { fg = colors.dark_orange })
-hi('Keyword', { fg = colors.purple, style = 'bold' })
-hi('Exception', { fg = colors.purple, style = 'bold' })
+hi('Keyword', { fg = colors.dark_pink, style = 'bold' })
+hi('Exception', { fg = colors.dark_pink, style = 'bold' })
 
 hi('PreProc', { fg = colors.dark_cyan })
 hi('Include', { fg = colors.dark_cyan })
@@ -162,7 +165,7 @@ hi('Debug', { fg = colors.dark_orange })
 hi('Underlined', { style = 'underline' })
 hi('Ignore', { fg = colors.gray3 })
 hi('Error', { fg = colors.red, bg = colors.bg, style = 'bold' })
-hi('Todo', { fg = colors.purple, bg = colors.yellow, style = 'bold' })
+hi('Todo', { fg = colors.pink, bg = colors.yellow, style = 'bold' })
 
 -- Enhanced Treesitter highlights
 -- Literals
@@ -192,18 +195,18 @@ hi('@constructor', { fg = colors.dark_blue, style = 'bold' })
 hi('@parameter', { fg = colors.brown })
 
 -- Keywords
-hi('@keyword', { fg = colors.purple, style = 'bold' })
-hi('@keyword.function', { fg = colors.purple, style = 'bold' })
-hi('@keyword.operator', { fg = colors.purple, style = 'bold' })
-hi('@keyword.return', { fg = colors.purple, style = 'bold' })
-hi('@keyword.conditional', { fg = colors.purple, style = 'bold' })
-hi('@keyword.repeat', { fg = colors.purple, style = 'bold' })
+hi('@keyword', { fg = colors.dark_pink, style = 'bold' })
+hi('@keyword.function', { fg = colors.dark_pink, style = 'bold' })
+hi('@keyword.operator', { fg = colors.dark_pink, style = 'bold' })
+hi('@keyword.return', { fg = colors.dark_pink, style = 'bold' })
+hi('@keyword.conditional', { fg = colors.dark_pink, style = 'bold' })
+hi('@keyword.repeat', { fg = colors.dark_pink, style = 'bold' })
 hi('@keyword.import', { fg = colors.dark_cyan, style = 'bold' })
 hi('@keyword.export', { fg = colors.dark_cyan, style = 'bold' })
 
-hi('@conditional', { fg = colors.purple, style = 'bold' })
-hi('@repeat', { fg = colors.purple, style = 'bold' })
-hi('@label', { fg = colors.purple })
+hi('@conditional', { fg = colors.dark_pink, style = 'bold' })
+hi('@repeat', { fg = colors.dark_pink, style = 'bold' })
+hi('@label', { fg = colors.pink })
 
 -- Operators
 hi('@operator', { fg = colors.dark_orange })
@@ -217,9 +220,9 @@ hi('@punctuation.special', { fg = colors.dark_orange })
 hi('@type', { fg = colors.dark_blue, style = 'bold' })
 hi('@type.builtin', { fg = colors.blue, style = 'bold' })
 hi('@type.definition', { fg = colors.dark_blue, style = 'bold' })
-hi('@type.qualifier', { fg = colors.purple })
+hi('@type.qualifier', { fg = colors.dark_pink })
 
-hi('@storageclass', { fg = colors.purple, style = 'bold' })
+hi('@storageclass', { fg = colors.dark_pink, style = 'bold' })
 hi('@attribute', { fg = colors.dark_cyan })
 hi('@field', { fg = colors.brown })
 hi('@property', { fg = colors.brown })
@@ -248,7 +251,7 @@ hi('@text.environment', { fg = colors.dark_cyan })
 hi('@text.environment.name', { fg = colors.dark_blue })
 hi('@text.reference', { fg = colors.dark_orange })
 
-hi('@text.todo', { fg = colors.purple, bg = colors.yellow, style = 'bold' })
+hi('@text.todo', { fg = colors.pink, bg = colors.yellow, style = 'bold' })
 hi('@text.note', { fg = colors.blue, style = 'bold' })
 hi('@text.warning', { fg = colors.orange, style = 'bold' })
 hi('@text.danger', { fg = colors.red, style = 'bold' })
