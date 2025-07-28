@@ -86,6 +86,9 @@ end
 
 -- Basic UI highlights
 hi('Normal', { fg = colors.fg, bg = colors.bg })
+hi('NormalFloat', { fg = colors.fg, bg = colors.bg })
+hi('FloatBorder', { fg = colors.gray4, bg = colors.bg })
+hi('FloatTitle', { fg = colors.dark_blue, bg = colors.bg, style = 'bold' })
 hi('Cursor', { fg = colors.bg, bg = colors.fg })
 hi('CursorLine', { bg = colors.cursor_line })
 hi('CursorColumn', { bg = colors.cursor_line })
@@ -311,15 +314,28 @@ hi('GitSignsAdd', { fg = colors.green })
 hi('GitSignsChange', { fg = colors.orange })
 hi('GitSignsDelete', { fg = colors.red })
 
--- Which-key
-hi('WhichKey', { fg = colors.dark_blue, bg = colors.bg })
-hi('WhichKeyGroup', { fg = colors.pink, bg = colors.bg })
-hi('WhichKeyDesc', { fg = colors.fg, bg = colors.bg })
-hi('WhichKeySeperator', { fg = colors.gray4, bg = colors.bg })
-hi('WhichKeyFloat', { bg = colors.bg })
-hi('WhichKeyBorder', { fg = colors.gray4, bg = colors.bg })
-hi('WhichKeyNormal', { fg = colors.fg, bg = colors.bg })
-hi('WhichKeyValue', { fg = colors.gray5, bg = colors.bg })
+-- Mini.nvim (mini.files, mini.pick, etc.)
+hi('MiniFilesNormal', { fg = colors.fg, bg = colors.bg })
+hi('MiniFilesBorder', { fg = colors.gray4, bg = colors.bg })
+hi('MiniFilesDirectory', { fg = colors.dark_blue, bg = colors.bg })
+hi('MiniFilesFile', { fg = colors.fg, bg = colors.bg })
+hi('MiniFilesCursorLine', { bg = colors.cursor_line })
+hi('MiniFilesTitle', { fg = colors.dark_blue, bg = colors.bg, style = 'bold' })
+
+hi('MiniPickNormal', { fg = colors.fg, bg = colors.bg })
+hi('MiniPickBorder', { fg = colors.gray4, bg = colors.bg })
+hi('MiniPickMatchCurrent', { bg = colors.cursor_line })
+hi('MiniPickMatchMarked', { fg = colors.pink, bg = colors.bg })
+
+hi('MiniStarterCurrent', { bg = colors.cursor_line })
+hi('MiniStarterFooter', { fg = colors.gray5, bg = colors.bg })
+hi('MiniStarterHeader', { fg = colors.dark_blue, bg = colors.bg, style = 'bold' })
+hi('MiniStarterInactive', { fg = colors.gray5, bg = colors.bg })
+hi('MiniStarterItem', { fg = colors.fg, bg = colors.bg })
+hi('MiniStarterItemBullet', { fg = colors.pink, bg = colors.bg })
+hi('MiniStarterItemPrefix', { fg = colors.dark_blue, bg = colors.bg })
+hi('MiniStarterSection', { fg = colors.pink, bg = colors.bg, style = 'bold' })
+hi('MiniStarterQuery', { fg = colors.dark_green, bg = colors.bg })
 
 -- Make the colorscheme available
 M.colors = colors
