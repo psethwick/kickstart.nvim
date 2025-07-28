@@ -93,8 +93,8 @@ hi('LineNr', { fg = colors.line_nr })
 hi('CursorLineNr', { fg = colors.cursor_line_nr, style = 'bold' })
 hi('Visual', { bg = colors.visual })
 hi('VisualNOS', { bg = colors.visual })
-hi('Search', { bg = colors.search })
-hi('IncSearch', { bg = colors.inc_search })
+hi('Search', { fg = colors.fg, bg = colors.search })
+hi('IncSearch', { fg = colors.fg, bg = colors.inc_search })
 hi('MatchParen', { bg = colors.gray2, style = 'bold' })
 
 -- Status line and tabs
