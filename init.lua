@@ -37,6 +37,12 @@ if vim.env.COLORTERM == 'truecolor' then
   vim.cmd.colorscheme 'george'
 end
 
+vim.keymap.set('n', '<leader>hi', function()
+  local synID = vim.fn.synID(vim.fn.line '.', vim.fn.col '.', 1)
+  local group = vim.fn.synIDattr(synID, 'name')
+  print('Highlight group: ' .. group)
+end, { desc = 'Show highlight group under cursor' })
+
 vim.opt.cursorline = true
 
 vim.opt.scrolloff = 10
