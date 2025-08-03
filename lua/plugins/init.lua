@@ -1,14 +1,7 @@
 return {
-  -- {
-  --   'miikanissi/modus-themes.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     if vim.env.COLORTERM == 'truecolor' then
-  --       vim.opt.termguicolors = true
-  --       vim.cmd.colorscheme 'modus'
-  --     end
-  --   end,
-  -- },
+  {
+    'psethwick/vim-stardict',
+  },
   {
     'milanglacier/yarepl.nvim',
     config = function()
