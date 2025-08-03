@@ -35,6 +35,7 @@ vim.opt.inccommand = 'split'
 -- Set a light colorscheme as default to prevent dark flash
 vim.cmd.colorscheme 'zellner'
 vim.cmd.colorscheme 'modern_zellner'
+vim.cmd.colorscheme 'wcag'
 -- or vim.cmd.colorscheme('shine') for a lighter default
 -- if vim.env.COLORTERM == 'truecolor' then
 --   vim.opt.termguicolors = true
