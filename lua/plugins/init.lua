@@ -1,7 +1,5 @@
 return {
-  {
-    'psethwick/vim-stardict',
-  },
+  'chomosuke/typst-preview.nvim',
   {
     'milanglacier/yarepl.nvim',
     config = function()
@@ -27,13 +25,6 @@ return {
         format_repl_buffers_names = true,
       }
     end,
-  },
-  {
-    'quarto-dev/quarto-nvim',
-    dependencies = {
-      'jmbuhr/otter.nvim',
-      'nvim-treesitter/nvim-treesitter',
-    },
   },
   {
     lazy = false,

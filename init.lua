@@ -32,15 +32,7 @@ vim.opt.ffs = 'unix'
 
 vim.opt.inccommand = 'split'
 
--- Set a light colorscheme as default to prevent dark flash
-vim.cmd.colorscheme 'zellner'
-vim.cmd.colorscheme 'modern_zellner'
 vim.cmd.colorscheme 'wcag'
--- or vim.cmd.colorscheme('shine') for a lighter default
--- if vim.env.COLORTERM == 'truecolor' then
---   vim.opt.termguicolors = true
---   vim.cmd.colorscheme 'modus'
--- end
 
 vim.keymap.set('n', '<leader>hi', function()
   local synID = vim.fn.synID(vim.fn.line '.', vim.fn.col '.', 1)
