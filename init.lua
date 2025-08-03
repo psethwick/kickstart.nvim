@@ -32,10 +32,13 @@ vim.opt.ffs = 'unix'
 
 vim.opt.inccommand = 'split'
 
-if vim.env.COLORTERM == 'truecolor' then
-  vim.opt.termguicolors = true
-  vim.cmd.colorscheme 'george'
-end
+-- Set a light colorscheme as default to prevent dark flash
+vim.cmd.colorscheme 'shine'
+-- or vim.cmd.colorscheme('shine') for a lighter default
+-- if vim.env.COLORTERM == 'truecolor' then
+--   vim.opt.termguicolors = true
+--   vim.cmd.colorscheme 'modus'
+-- end
 
 vim.keymap.set('n', '<leader>hi', function()
   local synID = vim.fn.synID(vim.fn.line '.', vim.fn.col '.', 1)
