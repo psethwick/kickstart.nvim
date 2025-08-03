@@ -1,6 +1,5 @@
 -- Modern Zellner colorscheme with neon pink/purple highlights
 -- Place this file in ~/.config/nvim/colors/modern_zellner.lua
--- or ~/.config/nvim/lua/colors/modern_zellner.lua
 
 -- Define the color palette
 local palette = {
@@ -15,13 +14,13 @@ local palette = {
   -- Neon accent colors
   pink = '#ff1493', -- Deep pink / hot pink
   purple = '#8a2be2', -- Blue violet
-  cyan = '#55bfff', -- Bright cyan
+  magenta = '#ff00ff', -- Bright magenta (replaces cyan)
 
   -- Supporting colors
   red = '#dc143c', -- Crimson
   orange = '#ff4500', -- Orange red
   yellow = '#ffd700', -- Gold
-  green = '#32cd32', -- Lime green
+  green = '#00aa00', -- Darker green for better contrast
   blue = '#1e90ff', -- Dodger blue
 
   -- UI colors
@@ -107,8 +106,8 @@ local function setup()
     Structure = { fg = palette.pink, bold = true },
     Typedef = { fg = palette.blue, bold = true },
 
-    Special = { fg = palette.cyan, bold = true },
-    SpecialChar = { fg = palette.pink },
+    Special = { fg = palette.pink, bold = true },
+    SpecialChar = { fg = palette.magenta },
     Tag = { fg = palette.purple },
     Delimiter = { fg = palette.fg_alt },
     SpecialComment = { fg = palette.purple, italic = true },
@@ -126,7 +125,7 @@ local function setup()
 
     ['@string'] = { fg = palette.green },
     ['@string.escape'] = { fg = palette.pink },
-    ['@string.special'] = { fg = palette.cyan },
+    ['@string.special'] = { fg = palette.magenta },
 
     ['@character'] = { fg = palette.green },
     ['@character.special'] = { fg = palette.pink },
@@ -165,7 +164,7 @@ local function setup()
     ['@type.definition'] = { fg = palette.blue, bold = true },
 
     ['@property'] = { fg = palette.fg },
-    ['@attribute'] = { fg = palette.cyan },
+    ['@attribute'] = { fg = palette.magenta },
 
     ['@comment'] = { fg = palette.comment, italic = true },
     ['@comment.documentation'] = { fg = palette.purple, italic = true },
@@ -176,7 +175,7 @@ local function setup()
 
     -- LSP semantic tokens
     ['@lsp.type.class'] = { fg = palette.blue, bold = true },
-    ['@lsp.type.decorator'] = { fg = palette.cyan },
+    ['@lsp.type.decorator'] = { fg = palette.magenta },
     ['@lsp.type.enum'] = { fg = palette.blue, bold = true },
     ['@lsp.type.enumMember'] = { fg = palette.purple },
     ['@lsp.type.function'] = { fg = palette.pink, bold = true },
@@ -215,7 +214,7 @@ local function setup()
     -- Telescope
     TelescopePromptBorder = { fg = palette.pink },
     TelescopeResultsBorder = { fg = palette.purple },
-    TelescopePreviewBorder = { fg = palette.cyan },
+    TelescopePreviewBorder = { fg = palette.magenta },
     TelescopeSelection = { bg = palette.selection },
     TelescopeMatching = { fg = palette.pink, bold = true },
 
@@ -252,9 +251,17 @@ local function setup()
     DiffText = { bg = '#ffeaa7' },
   }
 
+  -- Apply the color groups
   for group, opts in pairs(groups) do
     vim.api.nvim_set_hl(0, group, opts)
   end
 end
 
+-- Auto-setup if loaded as a colorscheme
 setup()
+
+-- Export for manual setup
+return {
+  setup = setup,
+  palette = palette,
+}
