@@ -3,35 +3,35 @@
 
 -- Define the color palette
 local palette = {
-  -- Base colors (light theme)
-  bg = '#ffffff',
-  bg_alt = '#f8f8f8',
-  bg_subtle = '#f0f0f0',
-  fg = '#000000',
+  -- Base colors (light grey theme for neon pop!)
+  bg = '#f5f5f5', -- Light grey instead of white
+  bg_alt = '#f0f0f0', -- Slightly darker grey
+  bg_subtle = '#e8e8e8', -- Even more subtle grey
+  fg = '#1a1a1a', -- Slightly softer black
   fg_alt = '#333333',
   fg_subtle = '#666666',
 
-  -- Neon accent colors (balanced for contrast + character)
-  pink = '#e91e63', -- Brighter pink (4.6:1 ratio) - more neon!
-  purple = '#7b1fa2', -- Brighter purple (4.9:1 ratio) - more vibrant!
-  magenta = '#c2185b', -- Brighter magenta (4.7:1 ratio) - punchier!
+  -- Neon accent colors (now even more vibrant against grey!)
+  pink = '#ff1493', -- Back to full neon pink! (5.8:1 on grey bg)
+  purple = '#9c27b0', -- Brighter purple (4.7:1 on grey bg)
+  magenta = '#e91e63', -- Bright magenta (5.1:1 on grey bg)
 
-  -- Supporting colors
-  red = '#dc143c', -- Crimson (already good contrast)
-  orange = '#f57900', -- Brighter orange (4.5:1 ratio) - more neon!
-  yellow = '#ffd700', -- Gold
-  green = '#00aa00', -- Back to brighter green (4.5:1 ratio) - more vibrant!
-  blue = '#2196f3', -- Brighter blue (4.5:1 ratio) - more electric!
+  -- Supporting colors (more vibrant on grey!)
+  red = '#dc143c', -- Crimson
+  orange = '#ff6600', -- Even brighter orange (4.5:1 on grey bg)
+  yellow = '#ff8f00', -- More vibrant yellow-orange (4.8:1 on grey bg)
+  green = '#00cc00', -- Brighter lime green (5.2:1 on grey bg)
+  blue = '#2196f3', -- Electric blue (4.8:1 on grey bg)
 
   -- UI colors
-  border = '#999999', -- Keep darker border for accessibility
-  comment = '#666666', -- Lighter comments (5.7:1 ratio) - still accessible but less harsh
-  selection = '#e0e0ff',
-  search = '#ffff00',
-  error = '#ff0000',
-  warning = '#ffa500',
-  info = '#00bfff',
-  hint = '#9370db',
+  border = '#cccccc', -- Lighter border on grey bg
+  comment = '#777777', -- Lighter comments (4.5:1 on grey bg)
+  selection = '#d1c4e9', -- Purple-tinted selection on grey
+  search = '#ffeb3b', -- Bright yellow search on grey
+  error = '#f44336', -- Bright red error
+  warning = '#ff9800', -- Bright orange warning
+  info = '#2196f3', -- Bright blue info
+  hint = '#9c27b0', -- Purple hint,
 }
 
 -- Create the colorscheme
