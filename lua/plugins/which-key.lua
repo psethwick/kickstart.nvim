@@ -24,7 +24,7 @@ return {
       }
 
       require('which-key').add {
-        { '<leader>h', desc = 'Git [H]unk', mode = 'v' },
+        { '<leader>h', group = 'Git [H]unk', mode = 'v' },
       }
     end,
   },

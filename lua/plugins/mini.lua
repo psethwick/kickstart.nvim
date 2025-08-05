@@ -48,9 +48,9 @@ return {
       vim.keymap.set('n', '<C-p>', function()
         require('mini.pick').builtin.files { tool = 'rg', extra_args = { '--files', '--hidden', '--glob', '!**/.git/*' } }
       end, { desc = 'Find files (fd/rg)' })
-      vim.keymap.set('n', '<leader><leader>', function()
+      vim.keymap.set('n', '<leader>fb', function()
         require('mini.pick').builtin.buffers()
-      end, { desc = '[ ] Find existing buffers' })
+      end, { desc = '[F]ind existing [b]uffers' })
 
       vim.keymap.set('n', '<leader>sg', function()
         require('mini.pick').builtin.grep_live()
