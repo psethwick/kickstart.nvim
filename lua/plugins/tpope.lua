@@ -1,6 +1,6 @@
 return {
   'tpope/vim-characterize',
-  'tpope/vim-sleuth',
+  { 'tpope/vim-sleuth', event = 'BufRead' },
   'tpope/vim-eunuch',
   {
     'tpope/vim-dispatch',

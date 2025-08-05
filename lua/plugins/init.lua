@@ -27,7 +27,7 @@ return {
     end,
   },
   {
-    lazy = false,
     'godlygeek/tabular',
+    cmd = 'Tabularize',
   },
 }
