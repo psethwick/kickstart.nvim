@@ -36,23 +36,23 @@ vim.opt.inccommand = 'split'
 
 vim.cmd.colorscheme 'wcag'
 
-vim.keymap.set('n', '<leader>hi', function()
-  local synID = vim.fn.synID(vim.fn.line '.', vim.fn.col '.', 1)
-  local group = vim.fn.synIDattr(synID, 'name')
-  print('Highlight group: ' .. group)
-end, { desc = 'Show highlight group under cursor' })
-
 vim.opt.cursorline = true
 
 vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<leader>hi', function()
+  local synID = vim.fn.synID(vim.fn.line '.', vim.fn.col '.', 1)
+  local group = vim.fn.synIDattr(synID, 'name')
+  print('Highlight group: ' .. group)
+end, { desc = 'Show highlight group under cursor' })
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>i', ':InspectTree<CR>', { desc = '[I]nspect Tree' })
 
 vim.keymap.set('n', '<C-j>', ':cn<CR>')
 vim.keymap.set('n', '<C-k>', ':cp<CR>')
