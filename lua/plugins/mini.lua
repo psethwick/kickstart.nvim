@@ -45,33 +45,19 @@ return {
       require('mini.pick').setup()
       require('mini.extra').setup()
 
-      local pickers = require('mini.extra').pickers
-
       vim.keymap.set('n', '<leader>sf', function()
         require('mini.pick').builtin.files()
       end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<C-p>', function()
         require('mini.pick').builtin.files { tool = 'rg', extra_args = { '--files', '--hidden', '--glob', '!**/.git/*' } }
       end, { desc = 'Find files (fd/rg)' })
-      vim.keymap.set('n', '<leader>sb', function()
-        require('mini.pick').builtin.buffer_lines()
-      end, { desc = '[S]earch [B]uffer' })
       vim.keymap.set('n', '<leader><leader>', function()
         require('mini.pick').builtin.buffers()
       end, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>ss', function()
-        require('mini.pick').builtin()
-      end, { desc = '[S]elect Picker' })
 
-      vim.keymap.set('n', '<leader>sw', function()
-        require('mini.pick').builtin.grep_word()
-      end, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', function()
         require('mini.pick').builtin.grep_live()
       end, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>s/', function()
-        require('mini.pick').builtin.grep_live { only_open = true, prompt_title = 'Live Grep in Open Files' }
-      end, { desc = '[S]earch [/] in Open Files' })
       vim.keymap.set('n', '<leader>sh', function()
         require('mini.pick').builtin.help()
       end, { desc = '[S]earch [H]elp' })
