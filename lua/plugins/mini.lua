@@ -22,6 +22,7 @@ return {
       }
 
       require('mini.surround').setup()
+      require('mini.align').setup()
       require('mini.files').setup {
         windows = {
           preview = true,

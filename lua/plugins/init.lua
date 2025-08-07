@@ -26,8 +26,4 @@ return {
       }
     end,
   },
-  {
-    'godlygeek/tabular',
-    cmd = 'Tabularize',
-  },
 }
