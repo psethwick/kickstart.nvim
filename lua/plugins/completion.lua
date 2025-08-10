@@ -2,13 +2,9 @@ return {
   {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets' },
-
     -- use a release tag to download pre-built binaries
     version = '1.*',
 
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
     opts = {
       -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
       keymap = { preset = 'default' },
@@ -20,7 +16,7 @@ return {
       completion = { documentation = { auto_show = false } },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'buffer' },
         per_filetype = {
           sql = { 'snippets', 'dadbod', 'buffer' },
         },
