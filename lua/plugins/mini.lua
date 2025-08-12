@@ -45,19 +45,21 @@ return {
 
       require('mini.pick').setup()
       require('mini.extra').setup()
+      local MiniPick = require 'mini.pick'
+      vim.ui.select = MiniPick.ui_select
 
       vim.keymap.set('n', '<C-p>', function()
-        require('mini.pick').builtin.files()
+        MiniPick.builtin.files()
       end, { desc = 'Find files (fd/rg)' })
       vim.keymap.set('n', '<leader><leader>', function()
-        require('mini.pick').builtin.buffers()
+        MiniPick.builtin.buffers()
       end, { desc = '[F]ind existing [b]uffers' })
 
       vim.keymap.set('n', '<leader>sg', function()
-        require('mini.pick').builtin.grep_live()
+        MiniPick.builtin.grep_live()
       end, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sh', function()
-        require('mini.pick').builtin.help()
+        MiniPick.builtin.help()
       end, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', function()
         require('mini.extra').pickers.keymaps()
