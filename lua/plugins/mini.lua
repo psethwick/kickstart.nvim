@@ -59,6 +59,7 @@ return {
       vim.keymap.set('n', '<leader>sg', function()
         MiniPick.builtin.grep_live()
       end, { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<leader>sw', ":Pick grep pattern='<cword>'<CR>")
       vim.keymap.set('n', '<leader>sh', function()
         MiniPick.builtin.help()
       end, { desc = '[S]earch [H]elp' })
