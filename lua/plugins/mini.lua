@@ -23,6 +23,7 @@ return {
 
       require('mini.align').setup()
       require('mini.surround').setup()
+      require('mini.diff').setup()
       require('mini.align').setup()
       require('mini.files').setup {
         windows = {

@@ -1,4 +1,5 @@
 return {
+  'tpope/vim-fugitive',
   'tpope/vim-characterize',
   { 'tpope/vim-sleuth', event = 'BufRead' },
   'tpope/vim-eunuch',
