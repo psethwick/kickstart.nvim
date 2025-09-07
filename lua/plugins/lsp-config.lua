@@ -36,6 +36,7 @@ return {
         pyright = {},
         rust_analyzer = {},
         ts_ls = {},
+        gdscript = {},
         --
 
         lua_ls = {
@@ -55,7 +56,13 @@ return {
       }
       require('mason').setup()
 
-      local ensure_installed = vim.tbl_keys(servers or {})
+      local ensure_installed = {}
+      for server_name, _ in pairs(servers) do
+        if server_name ~= 'gdscript' then
+          table.insert(ensure_installed, server_name)
+        end
+      end
+
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
@@ -71,6 +78,10 @@ return {
           end,
         },
       }
+
+      local gdscript_opts = servers.gdscript or {}
+      gdscript_opts.capabilities = vim.tbl_deep_extend('force', {}, capabilities, gdscript_opts.capabilities or {})
+      require('lspconfig').gdscript.setup(gdscript_opts)
     end,
   },
 }
