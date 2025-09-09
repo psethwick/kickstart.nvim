@@ -43,18 +43,19 @@ return {
           -- cmd = {...},
           -- filetypes = { ...},
           -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              workspace = {
-                userThirdParty = { os.getenv 'HOME' .. '.local/share/LuaAddons' },
-                checkThirdParty = 'Apply',
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
             },
+            workspace = {
+              userThirdParty = { os.getenv 'HOME' .. '.local/share/LuaAddons' },
+              checkThirdParty = true,
+              library = {
+                '${3rd}/love2d/library',
+              },
+            },
+            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            -- diagnostics = { disable = { 'missing-fields' } },
           },
         },
       }
