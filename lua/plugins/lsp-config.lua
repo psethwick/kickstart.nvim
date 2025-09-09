@@ -48,12 +48,17 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
+              workspace = {
+                userThirdParty = { os.getenv 'HOME' .. '.local/share/LuaAddons' },
+                checkThirdParty = 'Apply',
+              },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
       }
+
       require('mason').setup()
 
       local ensure_installed = {}
