@@ -1,8 +1,7 @@
 return {
-  'tpope/vim-fugitive',
   'tpope/vim-characterize',
-  { 'tpope/vim-sleuth', event = 'BufRead' },
   'tpope/vim-eunuch',
+  { 'tpope/vim-sleuth', event = 'BufRead' },
   {
     'tpope/vim-dispatch',
     config = function()
