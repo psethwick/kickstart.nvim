@@ -30,6 +30,7 @@ return {
           end,
           formatters_by_ft = {
             lua = { 'stylua' },
+            ocaml = { 'ocamlformat' },
             python = { 'ruff_format' },
             sql = { 'sql_formatter' },
             javascript = { 'prettier' },

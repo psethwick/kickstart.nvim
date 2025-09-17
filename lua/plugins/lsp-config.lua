@@ -31,13 +31,12 @@ return {
       })
 
       local servers = {
-        -- clangd = {},
         gopls = {},
         pyright = {},
         rust_analyzer = {},
         ts_ls = {},
-        gdscript = {},
-        --
+        stylua = {},
+        ocamllsp = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -48,13 +47,12 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
-              workspace = {
-                -- userThirdParty = { os.getenv 'HOME' .. '.local/share/LuaAddons' },
-                -- checkThirdParty = true,
-                library = { os.getenv 'HOME' .. '.local/share/LuaAddons/love2d' },
-              },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
+              -- workspace = {
+              --   checkThirdParty = false,
+              --   library = { '/home/chicken/.local/share/nvim/lazy/love2d.nvim/love2d', '/home/chicken/.local/share/nvim/lazy/love2d.nvim/luasocket' },
+              -- },
             },
           },
         },
@@ -64,17 +62,16 @@ return {
 
       local ensure_installed = {}
       for server_name, _ in pairs(servers) do
-        if server_name ~= 'gdscript' then
-          table.insert(ensure_installed, server_name)
-        end
+        table.insert(ensure_installed, server_name)
       end
 
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-      })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      -- manually installed
+      -- table.insert(servers, ocamllsp = {})
+
       local capabilities = require('blink.cmp').get_lsp_capabilities()
+
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
@@ -84,10 +81,6 @@ return {
           end,
         },
       }
-
-      local gdscript_opts = servers.gdscript or {}
-      gdscript_opts.capabilities = vim.tbl_deep_extend('force', {}, capabilities, gdscript_opts.capabilities or {})
-      require('lspconfig').gdscript.setup(gdscript_opts)
     end,
   },
 }
