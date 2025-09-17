@@ -1,5 +1,4 @@
 return {
-  'chomosuke/typst-preview.nvim',
   {
     'milanglacier/yarepl.nvim',
     config = function()
