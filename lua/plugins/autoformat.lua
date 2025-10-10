@@ -38,6 +38,18 @@ return {
             typescript = { 'prettier' },
             typescriptreact = { 'prettier' },
           },
+          formatters = {
+            ocamlformat = {
+              prepend_args = {
+                '--if-then-else',
+                'vertical',
+                '--break-cases',
+                'fit-or-vertical',
+                '--type-decl',
+                'sparse',
+              },
+            },
+          },
         }
       end
     end,
