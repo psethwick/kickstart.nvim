@@ -3,9 +3,6 @@ return {
     'neovim/nvim-lspconfig',
     event = 'VeryLazy',
     dependencies = {
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-      'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
       { 'folke/neodev.nvim', opts = {} },
     },
@@ -34,7 +31,7 @@ return {
         gopls = {},
         pyright = {},
         rust_analyzer = {},
-        ts_ls = {},
+        tsserver = {},
         stylua = {},
         ocamllsp = {},
 
@@ -58,29 +55,13 @@ return {
         },
       }
 
-      require('mason').setup()
-
-      local ensure_installed = {}
-      for server_name, _ in pairs(servers) do
-        table.insert(ensure_installed, server_name)
-      end
-
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-      -- manually installed
-      -- table.insert(servers, ocamllsp = {})
-
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      }
+      local lspconfig = require('lspconfig')
+      for server_name, server_config in pairs(servers) do
+        server_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server_config.capabilities or {})
+        lspconfig[server_name].setup(server_config)
+      end
     end,
   },
 }
