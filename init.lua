@@ -35,7 +35,9 @@ vim.opt.ffs = 'unix'
 
 vim.opt.inccommand = 'split'
 
-vim.cmd.colorscheme 'wcag'
+if not vim.env.TERMUX_VERSION then
+  vim.cmd.colorscheme 'wcag'
+end
 
 vim.opt.cursorline = true
 
