@@ -31,7 +31,7 @@ return {
         gopls = {},
         pyright = {},
         rust_analyzer = {},
-        tsserver = {},
+        ts_ls = {},
         stylua = {},
         ocamllsp = {},
 
