@@ -32,7 +32,7 @@ return {
         pyright = {},
         rust_analyzer = {},
         ts_ls = {},
-        stylua = {},
+        -- stylua = {},
         ocamllsp = {},
 
         lua_ls = {
@@ -57,7 +57,7 @@ return {
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      local lspconfig = require('lspconfig')
+      local lspconfig = require 'lspconfig'
       for server_name, server_config in pairs(servers) do
         server_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server_config.capabilities or {})
         lspconfig[server_name].setup(server_config)
