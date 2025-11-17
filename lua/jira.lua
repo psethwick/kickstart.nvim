@@ -80,7 +80,7 @@ local function insert_jira_ticket()
   end)
 end
 
-vim.keymap.set({ 'n', 'i' }, 'jt', insert_jira_ticket, { desc = 'Insert Jira ticket' })
+vim.keymap.set({ 'n', 'i' }, '<C-j>', insert_jira_ticket, { desc = 'Insert Jira ticket' })
 
 return {
   insert_jira_ticket = insert_jira_ticket,
