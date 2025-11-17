@@ -1,12 +1,6 @@
--- Insert Jira ticket ID using fuzzy picker
--- Usage: Call this function from normal or insert mode
--- :lua insert_jira_ticket()
-
 local function insert_jira_ticket()
-  -- Command to fetch Jira tickets (using CSV format for easier parsing)
   local jira_cmd = "acli jira workitem search --jql 'assignee = currentUser()' --csv"
 
-  -- Execute the command and capture output
   local handle = io.popen(jira_cmd .. ' 2>&1')
   if not handle then
     vim.notify('Failed to execute Jira command', vim.log.levels.ERROR)
@@ -21,7 +15,6 @@ local function insert_jira_ticket()
     return
   end
 
-  -- Parse CSV output into a table of tickets
   local tickets = {}
   local headers = {}
   local first_line = true
@@ -67,7 +60,6 @@ local function insert_jira_ticket()
     return
   end
 
-  -- Use vim.ui.select for fuzzy picking
   vim.ui.select(tickets, {
     prompt = 'Select Jira ticket:',
     format_item = function(item)
@@ -75,27 +67,20 @@ local function insert_jira_ticket()
     end,
   }, function(choice)
     if choice then
-      -- Insert the ticket ID at cursor position
       local row, col = unpack(vim.api.nvim_win_get_cursor(0))
       local line = vim.api.nvim_get_current_line()
 
-      -- Insert ticket ID with a space before it if not at start
       local prefix = col > 0 and ' ' or ''
       local new_line = line:sub(1, col) .. prefix .. choice.id .. line:sub(col + 1)
 
       vim.api.nvim_set_current_line(new_line)
 
-      -- Move cursor after inserted text
       vim.api.nvim_win_set_cursor(0, { row, col + #prefix + #choice.id })
     end
   end)
 end
 
--- Create a command for easy access
-vim.api.nvim_create_user_command('JiraTicket', insert_jira_ticket, {})
-
--- Optional: Set up a keybinding
-vim.keymap.set({ 'n', 'i' }, '<leader>jt', insert_jira_ticket, { desc = 'Insert Jira ticket' })
+vim.keymap.set({ 'n', 'i' }, 'jt', insert_jira_ticket, { desc = 'Insert Jira ticket' })
 
 return {
   insert_jira_ticket = insert_jira_ticket,
