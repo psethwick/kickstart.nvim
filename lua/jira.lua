@@ -19,17 +19,15 @@ local function insert_jira_ticket()
 
   for line in output:gmatch '[^\r\n]+' do
     if line:match '%S' then
-      -- Simple CSV parser (handles basic cases)
       local fields = {}
       for field in line:gmatch '([^,]+)' do
-        table.insert(fields, field:match '^%s*(.-)%s*$') -- trim whitespace
+        table.insert(fields, field:match '^%s*(.-)%s*$')
       end
 
       local ticket_id = fields[1]
       local status = fields[2] or ''
       local summary = fields[3] or ''
 
-      -- Validate ticket ID format (ABC-123)
       if ticket_id and ticket_id:match '^[A-Z]+%-[0-9]+$' then
         table.insert(tickets, {
           id = ticket_id,
@@ -54,12 +52,11 @@ local function insert_jira_ticket()
       local row, col = unpack(vim.api.nvim_win_get_cursor(0))
       local line = vim.api.nvim_get_current_line()
 
-      local prefix = col > 0 and ' ' or ''
-      local new_line = line:sub(1, col) .. prefix .. choice.id .. line:sub(col + 1)
+      local new_line = line:sub(1, col) .. choice.id .. line:sub(col + 1)
 
       vim.api.nvim_set_current_line(new_line)
 
-      vim.api.nvim_win_set_cursor(0, { row, col + #prefix + #choice.id })
+      vim.api.nvim_win_set_cursor(0, { row, col + #choice.id })
     end
   end)
 end
