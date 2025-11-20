@@ -1,5 +1,5 @@
 local function insert_jira_ticket()
-  local jira_cmd = "acli jira workitem search --jql 'assignee = currentUser()' --csv"
+  local jira_cmd = 'sqlite3 ~/.local/share/pstore/pstore.db -csv "select id,state,title from work where remote_id = 1"'
 
   local handle = io.popen(jira_cmd .. ' 2>&1')
   if not handle then
@@ -16,8 +16,6 @@ local function insert_jira_ticket()
   end
 
   local tickets = {}
-  local headers = {}
-  local first_line = true
 
   for line in output:gmatch '[^\r\n]+' do
     if line:match '%S' then
@@ -27,30 +25,16 @@ local function insert_jira_ticket()
         table.insert(fields, field:match '^%s*(.-)%s*$') -- trim whitespace
       end
 
-      if first_line then
-        -- Store header positions
-        headers = fields
-        for i, header in ipairs(headers) do
-          headers[header:lower()] = i
-        end
-        first_line = false
-      else
-        -- Parse data row
-        local key_idx = headers['key'] or 2
-        local status_idx = headers['status'] or 5
-        local summary_idx = headers['summary'] or 6
+      local ticket_id = fields[1]
+      local status = fields[2] or ''
+      local summary = fields[3] or ''
 
-        local ticket_id = fields[key_idx]
-        local status = fields[status_idx] or ''
-        local summary = fields[summary_idx] or ''
-
-        -- Validate ticket ID format (ABC-123)
-        if ticket_id and ticket_id:match '^[A-Z]+%-[0-9]+$' then
-          table.insert(tickets, {
-            id = ticket_id,
-            display = string.format('%s [%s] %s', ticket_id, status, summary),
-          })
-        end
+      -- Validate ticket ID format (ABC-123)
+      if ticket_id and ticket_id:match '^[A-Z]+%-[0-9]+$' then
+        table.insert(tickets, {
+          id = ticket_id,
+          display = string.format('%s [%s] %s', ticket_id, status, summary),
+        })
       end
     end
   end
@@ -80,7 +64,7 @@ local function insert_jira_ticket()
   end)
 end
 
-vim.keymap.set({ 'n', 'i' }, '<C-j>', insert_jira_ticket, { desc = 'Insert Jira ticket' })
+vim.keymap.set('i', '<C-j>', insert_jira_ticket, { desc = 'Insert Jira ticket' })
 
 return {
   insert_jira_ticket = insert_jira_ticket,
