@@ -17,7 +17,7 @@ return {
 
       if enabled then
         require('conform').setup {
-          notify_on_error = false,
+          notify_on_error = true,
           format_on_save = function(bufnr)
             -- Disable "format_on_save lsp_fallback" for languages that don't
             -- have a well standardized coding style. You can add additional
@@ -37,18 +37,7 @@ return {
             astro = { 'prettier' },
             typescript = { 'prettier' },
             typescriptreact = { 'prettier' },
-          },
-          formatters = {
-            ocamlformat = {
-              prepend_args = {
-                '--if-then-else',
-                'vertical',
-                '--break-cases',
-                'fit-or-vertical',
-                '--type-decl',
-                'sparse',
-              },
-            },
+            terraform = { 'terraform_fmt' },
           },
         }
       end
