@@ -11,14 +11,17 @@ return {
   },
   {
     'mlochbaum/BQN',
+    event = 'BufReadPre',
+    dependencies = {
+      'https://git.sr.ht/~detegr/nvim-bqn',
+    },
     config = function(plugin)
+      vim.filetype.add {
+        extension = {
+          bqn = 'bqn',
+        },
+      }
       vim.opt.rtp:append(plugin.dir .. '/editors/vim')
-      vim.g.nvim_bqn = 'bqn'
-      vim.cmd [[
-          au! BufRead,BufNewFile *.bqn setf bqn
-          au! BufRead,BufNewFile * if getline(1) =~ '^#!.*bqn$' | setf bqn | endif
-    ]]
     end,
   },
-  'https://git.sr.ht/~detegr/nvim-bqn',
 }
