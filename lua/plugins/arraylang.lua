@@ -21,6 +21,7 @@ return {
           bqn = 'bqn',
         },
       }
+	  vim.g.nvim_bqn = 'bqn'
       vim.opt.rtp:append(plugin.dir .. '/editors/vim')
     end,
   },
