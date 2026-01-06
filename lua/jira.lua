@@ -1,12 +1,15 @@
 local function insert_jira_ticket()
-  local jira_cmd = 'sqlite3 ~/.local/share/pstore/pstore.db -csv "select id,state,title from work where remote_id = 1"'
+  local db_path = '~/.local/share/pstore/pstore.db'
+  local query =
+    [[ "select w.id, w.state, w.title from work w join person p on p.id = w.assigned_to_id where p.name = 'Seth Rider' and w.state not in ('Delivered','Done','Deployed');" ]]
+
+  local jira_cmd = string.format('sqlite3 %s -csv %s', db_path, query)
 
   local handle = io.popen(jira_cmd .. ' 2>&1')
   if not handle then
     vim.notify('Failed to execute Jira command', vim.log.levels.ERROR)
     return
   end
-
   local output = handle:read '*a'
   local success = handle:close()
 
