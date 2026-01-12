@@ -8,6 +8,7 @@ return {
       require('dbee').install()
     end,
     cmd = { 'Dbee' },
+    ft = { 'sql' },
     init = function()
       vim.keymap.set('n', '<leader>db', ':Dbee<CR>', { desc = '[D]ata[b]ase UI' })
     end,
