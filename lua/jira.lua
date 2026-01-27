@@ -24,7 +24,11 @@ local function insert_jira_ticket()
     if line:match '%S' then
       local fields = {}
       for field in line:gmatch '([^,]+)' do
-        table.insert(fields, field:match '^%s*(.-)%s*$')
+        local cleaned_field = field:match '^%s*(.-)%s*$'
+        if cleaned_field:sub(1, 1) == '"' and cleaned_field:sub(-1, -1) == '"' then
+          cleaned_field = cleaned_field:sub(2, -2)
+        end
+        table.insert(fields, cleaned_field)
       end
 
       local ticket_id = fields[1]
@@ -36,6 +40,7 @@ local function insert_jira_ticket()
         table.insert(tickets, {
           id = ticket_id,
           display = string.format('%s [%s] %s %s', ticket_id, status, summary, assigned),
+          insert = string.format('%s %s', ticket_id, summary),
         })
       end
     end
@@ -56,11 +61,11 @@ local function insert_jira_ticket()
       local row, col = unpack(vim.api.nvim_win_get_cursor(0))
       local line = vim.api.nvim_get_current_line()
 
-      local new_line = line:sub(1, col) .. choice.id .. line:sub(col + 1)
+      local new_line = line:sub(1, col) .. choice.insert .. line:sub(col + 1)
 
       vim.api.nvim_set_current_line(new_line)
 
-      vim.api.nvim_win_set_cursor(0, { row, col + #choice.id })
+      vim.api.nvim_win_set_cursor(0, { row, col + #choice.insert })
     end
   end)
 end
