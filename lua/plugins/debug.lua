@@ -121,11 +121,8 @@ return {
       local function debug_pytest_bdd_picker()
         local pick = require 'mini.pick'
 
-        -- Use pytest to collect tests.
-        -- We use 'args' to ensure we only get the test IDs
         local cmd = 'pytest -q --collect-only --nd --color=no'
 
-        -- Run the command and capture output
         local handle = io.popen(cmd)
         if not handle then
           return
@@ -135,7 +132,6 @@ return {
 
         local items = {}
         for line in result:gmatch '[^\r\n]+' do
-          -- Clean up the pytest output to get clean scenario/test names
           if not line:match 'collected' and line ~= '' then
             table.insert(items, line)
           end
@@ -148,20 +144,10 @@ return {
             choose = function(item)
               local dap = require 'dap'
               local dap_python = require 'dap-python'
-              -- local dapview = require('dapview') -- dapview is already handled by global listeners
 
-              -- 1. Setup a listener: When the session starts, open dapview
-              -- This is handled by global listeners now, so we remove the redundant local listener
-              -- dap.listeners.after.event_initialized["dapview_config"] = function()
-              --   dapview.open()
-              -- end
-
-              -- 2. Launch the debugger with the selected -k filter
               dap_python.debug_selection {
                 module = 'pytest',
                 args = { '-k', item },
-                -- Ensure Django env is loaded if your shell doesn't do it automatically
-                -- env = { DJANGO_SETTINGS_MODULE = "my_project.settings" },
                 console = 'integratedTerminal',
               }
             end,
