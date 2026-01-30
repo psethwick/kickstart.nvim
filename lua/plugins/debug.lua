@@ -18,28 +18,28 @@ return {
     },
     keys = {
       {
-        '<F5>',
+        '<Up>',
         function()
           require('dap').continue()
         end,
         desc = 'Debug: Start/Continue',
       },
       {
-        '<F1>',
+        '<Right>',
         function()
           require('dap').step_into()
         end,
         desc = 'Debug: Step Into',
       },
       {
-        '<F2>',
+        '<Down>',
         function()
           require('dap').step_over()
         end,
         desc = 'Debug: Step Over',
       },
       {
-        '<F3>',
+        '<Left>',
         function()
           require('dap').step_out()
         end,
@@ -97,6 +97,7 @@ return {
       dap.configurations.cpp = lldb_config
       dap.configurations.c = lldb_config
       dap.configurations.rust = lldb_config
+      dap.configurations.zig = lldb_config
 
       local vscode_ext = require 'dap.ext.vscode'
       vscode_ext.json_decode = require('overseer.json').decode
@@ -155,7 +156,7 @@ return {
         }
       end
 
-      vim.keymap.set('n', '<leader>db', debug_pytest_bdd_picker, { desc = 'Fuzzy debug BDD with dapview' })
+      vim.keymap.set('n', '<leader>bdd', debug_pytest_bdd_picker, { desc = 'Fuzzy debug BDD with dapview' })
     end,
   },
 }
