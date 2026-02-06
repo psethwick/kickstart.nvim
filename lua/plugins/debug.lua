@@ -1,14 +1,12 @@
 return {
   {
-    'igorlfs/nvim-dap-view',
-    opts = {},
-  },
-  {
     'mfussenegger/nvim-dap',
+    'igorlfs/nvim-dap-view',
 
     dependencies = {
       'nvim-neotest/nvim-nio',
 
+      'theHamsta/nvim-dap-virtual-text',
       'williamboman/mason.nvim',
       'jay-babu/mason-nvim-dap.nvim',
 
