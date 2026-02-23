@@ -1,7 +1,7 @@
 local function insert_jira_ticket()
   local db_path = '~/.local/share/pstore/pstore.db'
   local query =
-    [[ "select w.id, w.state, w.title, p.name from work w left join person p on p.id = w.assigned_to_id where (p.name = 'Seth Rider' or w.id like 'ST%' or w.id like 'DRA%') and w.state not in ('Delivered','Done','Deployed');" ]]
+    [[ "select w.id, w.state, w.title, p.name from work w left join person p on p.id = w.assigned_to_id where (p.name = 'Seth Rider' or w.id like 'ST%' or w.id like 'DRA%' or w.id like 'CDT%') and w.state not in ('Delivered','Done','Deployed');" ]]
 
   local jira_cmd = string.format('sqlite3 %s -csv %s', db_path, query)
 
