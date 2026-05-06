@@ -115,7 +115,6 @@ return {
   config = config,
   keys = keys,
   dependencies = {
-    'nvim-treesitter/nvim-treesitter',
     'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
     'haydenmeade/neotest-jest',

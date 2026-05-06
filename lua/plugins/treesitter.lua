@@ -1,20 +1,5 @@
-return {
-  {
-    'nvim-treesitter/nvim-treesitter',
-    event = 'VeryLazy',
-    build = ':TSUpdate',
-    opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
-      auto_install = true,
-      highlight = {
-        enable = true,
-      },
-      indent = { enable = true },
-    },
-    config = function(_, opts)
-      require('nvim-treesitter.install').prefer_git = true
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup(opts)
-    end,
-  },
-}
+-- Treesitter is now built into Neovim 0.12
+-- Highlighting is enabled by default for bundled parsers
+-- For additional languages, install tree-sitter-cli and run :TSInstall <lang>
+
+return {}
