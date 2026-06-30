@@ -61,9 +61,9 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>i', ':InspectTree<CR>', { desc = '[I]nspect Tree' })
 
-vim.keymap.set('n', '<C-j>', ':cn<CR>')
-vim.keymap.set('n', '<C-k>', ':cp<CR>')
-vim.keymap.set('n', '<C-l>', ':cc<CR>')
+vim.keymap.set('n', '<C-S-j>', ':cn<CR>')
+vim.keymap.set('n', '<C-S-k>', ':cp<CR>')
+vim.keymap.set('n', '<C-S-l>', ':cc<CR>')
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
