@@ -35,6 +35,8 @@ vim.opt.ffs = 'unix'
 
 vim.opt.inccommand = 'split'
 
+vim.opt.termguicolors = true
+
 if not vim.env.TERMUX_VERSION then
   vim.cmd.colorscheme 'wcag'
 end
